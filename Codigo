@@ -1,0 +1,18 @@
+//Biblioteca
+const { fromEvent } = require('rxjs');
+
+// Observable
+const clicks = fromEvent(document, 'click');
+
+// Observer
+const observer = {
+ 
+  next: event => console.log(`Haz hecho clic en las coordenadas: ${event.clientX}, ${event.clientY}`),
+  
+  error: err => console.error('Algo salió mal: ' + err),
+  
+  complete: () => console.log('¡Terminado!'),
+};
+
+// Suscripcion del Observer al Observable
+clicks.subscribe(observer);
